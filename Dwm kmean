@@ -1,0 +1,19 @@
+
+from sklearn.datasets import make_blobs
+from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+#making datasets
+X ,y= make_blobs(
+    n_samples=50,
+    centers=3,
+    n_features=2,
+    random_state=20
+)
+plt.scatter(X[:, 0], X[:, 1])
+y_pred = KMeans(n_clusters=3, random_state=42).fit_predict(X)
+km = KMeans(n_clusters=3, random_state=42).fit(X)
+a = km.cluster_centers_
+plt.scatter(a[:,0],a[:,1],color='red')
+plt.scatter(X[:, 0], X[:, 1], c=y_pred)
+plt.title("Incorrect Number of Blobs")
+plt.show()
